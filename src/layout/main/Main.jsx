@@ -5,7 +5,7 @@ import Footer from '../footer/Footer';
 
 const Main = () => {
     return (
-        <div className='sm:max-sm:'>
+        <div className='sm:min-w'>
             <Header></Header>
             <Outlet></Outlet>
             <Footer></Footer>
