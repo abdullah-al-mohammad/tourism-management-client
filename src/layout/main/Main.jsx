@@ -5,7 +5,7 @@ import Footer from '../footer/Footer';
 
 const Main = () => {
     return (
-        <div className='sm:min-w'>
+        <div className='container mx-auto'>
             <Header></Header>
             <Outlet></Outlet>
             <Footer></Footer>
