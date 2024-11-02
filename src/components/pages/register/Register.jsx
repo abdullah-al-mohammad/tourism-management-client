@@ -1,14 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { AuthContext } from '../../provider/AuthProvider';
 import { updateProfile } from 'firebase/auth';
 import auth from '../../../../firebase.config';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const Register = () => {
-    const {createUser} = useContext(AuthContext)
+    const { createUser } = useContext(AuthContext)
+    const [error, setError] = useState()
+    const [success, setSuccess] = useState()
+    const [password, showPassword] = useState()
 
-    const handleRegister = e =>{
+    const handleRegister = e => {
         e.preventDefault()
         const form = new FormData(e.currentTarget)
         const name = form.get('name')
@@ -16,32 +20,44 @@ const Register = () => {
         const url = form.get('url')
         const password = form.get('password')
         console.log(name, email, url, password);
-
+        // clean 
+        setError('')
+        setSuccess('')
+        if (password.length < 6) {
+            return setError('Error: password must be 6 character')
+        } else if (!/[A-Z]/.test(password)) {
+            return setError('Error: password should be one uppercase')
+        } else if (!/[a-z]/.test(password)) {
+            return setError('Error: password should be one lowercase')
+        } else {
+            setSuccess('Account Crate Successfull')
+        }
         // create user auth
-        createUser( email, password )
-        .then((result) => {
-            const user = result.user
-            console.log(user);
+        createUser(email, password)
+            .then((result) => {
+                const user = result.user
+                console.log(user);
 
-            updateProfile(auth.currentUser, {
-                displayName: name,
-                photoURL: url,
-            }).then(() => {
-                console.log("Profile updated successfully!");
+
+                updateProfile(auth.currentUser, {
+                    displayName: name,
+                    photoURL: url,
+                }).then(() => {
+                    setSuccess("Profile updated successfully!");
+                })
+                    .catch(error => {
+                        console.error(error);
+
+                    })
+
             })
-            .catch(error => {
-                console.error(error);
-                
+            .catch((error) => {
+                const errorCode = error.code
+                console.log(errorCode);
+
+
             })
-            
-        })
-        .catch((error) => {
-            const errorCode = error.code
-            console.log(errorCode);
-            
-            
-        })
-        
+
     }
     return (
         <div className="hero bg-base-200 min-h-screen">
@@ -76,7 +92,15 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" placeholder="password" name='password' className="input input-bordered" required />
+                            <div className='relative'>
+                                <input type={password ? 'text' : 'password'}
+                                    placeholder="password"
+                                    name='password'
+                                    className="input input-bordered w-full" required />
+                                <p onClick={() => showPassword(!password)} className='absolute top-4 right-4'>
+                                    {password ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>}
+                                </p>
+                            </div>
                             <label className="label">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>
@@ -88,6 +112,8 @@ const Register = () => {
                             <button className="btn btn-primary">Register</button>
                         </div>
                     </form>
+                    <p className='text-red-600 p-4'>{error}</p>
+                    <p className='text-green-600 p-4'>{success}</p>
                 </div>
             </div>
         </div>

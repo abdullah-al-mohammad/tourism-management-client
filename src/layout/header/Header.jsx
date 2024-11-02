@@ -1,24 +1,27 @@
 import { Link, NavLink } from 'react-router-dom';
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import logo from '../../assets/logo.png'
 import { TfiAlignJustify } from 'react-icons/tfi';
 import { AiOutlineClose } from 'react-icons/ai';
+import { AuthContext } from '../../components/provider/AuthProvider';
+import profile from '../../assets/profile.png'
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false)
+    const {user} = useContext(AuthContext)
     const links = <>
-            <li>
-                <NavLink to='/'>Home</NavLink>
-            </li>
-            <li>
-                <NavLink to='/allSpot'>All Tourists Spot</NavLink>
-            </li>
-            <li>
-                <NavLink to='/addSpot'>Add Tourists Spot</NavLink>
-            </li>
-            <li>
-                <NavLink to='/myList'>My List</NavLink>
-            </li>
+        <li>
+            <NavLink to='/'>Home</NavLink>
+        </li>
+        <li>
+            <NavLink to='/allSpot'>All Tourists Spot</NavLink>
+        </li>
+        <li>
+            <NavLink to='/addSpot'>Add Tourists Spot</NavLink>
+        </li>
+        <li>
+            <NavLink to='/myList'>My List</NavLink>
+        </li>
     </>
     return (
         <div className="navbar bg-base-100">
@@ -53,9 +56,16 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to='/login'><button className='btn btn-link'>Sign In</button></Link>
-                <span>or</span>
-                <Link to='/register'><button className='btn btn-link'>Register</button></Link>
+                <div>
+                    {
+                        user ? <img className='w-10' src={user.photoURL} alt="" /> : <img className='w-10' src={profile} alt="" />
+                    }
+                </div>
+                <div>
+                    <Link to='/login'><button className='btn btn-link'>Sign In</button></Link>
+                    <span>or</span>
+                    <Link to='/register'><button className='btn btn-link'>Register</button></Link>
+                </div>
             </div>
         </div>
     );

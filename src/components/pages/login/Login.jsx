@@ -1,7 +1,7 @@
 import React from 'react';
-import { FaFacebook, FaGoogle } from 'react-icons/fa';
+import { FaEye, FaEyeSlash, FaFacebook, FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { AuthContext } from '../../provider/AuthProvider';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import auth from '../../../../firebase.config';
@@ -10,6 +10,7 @@ const Login = () => {
 
     const { signInUser } = useContext(AuthContext)
     const googleProvider = new GoogleAuthProvider()
+    const [showPassword, setShowPassword] = useState()
 
     const handleSignIn = e => {
         e.preventDefault()
@@ -35,17 +36,17 @@ const Login = () => {
     }
 
     // google signUp
-    const handleGoogleSignUp = () =>{
+    const handleGoogleSignUp = () => {
         signInWithPopup(auth, googleProvider)
-        .then(result => {
-            const user = result.user
-            console.log(user);
-            
-        })
-        .catch(error => {
-            console.error(error);
-            
-        })
+            .then(result => {
+                const user = result.user
+                console.log(user);
+
+            })
+            .catch(error => {
+                console.error(error);
+
+            })
     }
     return (
         <div className="hero bg-base-200 min-h-screen">
@@ -68,7 +69,17 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" placeholder="password" name='password' className="input input-bordered" required />
+                            <div className='relative'>
+                                <input type={showPassword? "text" : 'password'}
+                                    placeholder="password"
+                                    name='password'
+                                    className="input input-bordered w-full" required />
+                                    <p className='right-3 bottom-4 absolute' onClick={() => setShowPassword(!showPassword)}>
+                                        {
+                                            showPassword? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>
+                                        }
+                                    </p>
+                            </div>
                             <label className="label">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>
