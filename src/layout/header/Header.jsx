@@ -58,7 +58,17 @@ const Header = () => {
             <div className="navbar-end">
                 <div>
                     {
-                        user ? <img className='w-8 h-8 rounded-full' src={user?.photoURL} alt="" /> : <img className='w-8 h-8 rounded-full' src={profile} alt="" />
+                        user ? <img className='w-8 h-8 rounded-full'
+                         src={user?.photoURL}
+                          alt=""
+                          title={user.displayName}
+                           /> 
+                           : 
+                           <img className='w-8 h-8 rounded-full'
+                            src={profile}
+                             alt=""
+                             title='Guest'
+                              />
                     }
                 </div>
                 <div>

@@ -8,6 +8,7 @@ import Home from '../pages/home/Home';
 import Main from '../../layout/main/Main';
 import Register from '../pages/register/Register';
 import Login from '../pages/login/Login';
+import AddSpot from '../pages/addSpot/AddSpot';
 
 const router = createBrowserRouter([
     {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
             {
                 path: '/login',
                 element: <Login></Login>
+            },
+            {
+                path: 'addSpot',
+                element: <AddSpot></AddSpot>
             }
         ]
     },
