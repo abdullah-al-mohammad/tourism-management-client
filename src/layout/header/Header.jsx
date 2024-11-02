@@ -7,10 +7,18 @@ import { AiOutlineClose } from 'react-icons/ai';
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false)
     const links = <>
-        <NavLink to='/'><li><a>Home</a></li></NavLink>
-        <NavLink to='/'><li><a>All Tourists Spot</a></li></NavLink>
-        <NavLink to='/'><li><a>Add Tourists Spot</a></li></NavLink>
-        <NavLink to='/'><li><a>My List</a></li></NavLink>
+            <li>
+                <NavLink to='/'>Home</NavLink>
+            </li>
+            <li>
+                <NavLink to='/allSpot'>All Tourists Spot</NavLink>
+            </li>
+            <li>
+                <NavLink to='/addSpot'>Add Tourists Spot</NavLink>
+            </li>
+            <li>
+                <NavLink to='/myList'>My List</NavLink>
+            </li>
     </>
     return (
         <div className="navbar bg-base-100">
@@ -45,9 +53,9 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link><button className='btn btn-link'>Login</button></Link>
+                <Link to='/login'><button className='btn btn-link'>Sign In</button></Link>
                 <span>or</span>
-                <Link><button className='btn btn-link'>Register</button></Link>
+                <Link to='/register'><button className='btn btn-link'>Register</button></Link>
             </div>
         </div>
     );

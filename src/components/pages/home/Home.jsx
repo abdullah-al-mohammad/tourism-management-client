@@ -5,16 +5,16 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 import 'swiper/css/autoplay';
-import banner1 from '../../../assets/banner/banner1.jpg'
-import banner2 from '../../../assets/banner/banner2.jpg'
-import banner3 from '../../../assets/banner/banner3.jpg'
-import Header from '../../../layout/header/Header';
+// import banner1 from '../../../assets/banner/banner1.jpg'
+// import banner2 from '../../../assets/banner/banner2.jpg'
+// import banner3 from '../../../assets/banner/banner3.jpg'
+// import Header from '../../../layout/header/Header';
 
 const Home = () => {
     return (
         <div>
             <Swiper
-                className='h-96 w-full'
+                className=''
                 modules={[Navigation, Pagination, A11y, EffectFade, Autoplay]}
                 spaceBetween={50}
                 slidesPerView={1}
@@ -25,10 +25,30 @@ const Home = () => {
                 onSlideChange={() => console.log('slide change')}
                 onSwiper={(swiper) => console.log(swiper)}
             >
-                <SwiperSlide><img className='h-full object-cover' src={banner2} alt="" /></SwiperSlide>
-                <SwiperSlide><img className='h-full object-cover' src={banner3} alt="" /></SwiperSlide>
-                <SwiperSlide><img className='h-full object-cover' src={banner1} alt="" /></SwiperSlide>
+                <SwiperSlide><img className='' src='https://placehold.co/1950x600/000000/FFF' alt="" /></SwiperSlide>
+                <SwiperSlide><img className='' src='https://placehold.co/1950x600/000000/FFF' alt="" /></SwiperSlide>
+                <SwiperSlide><img className='' src='https://placehold.co/1950x600/000000/FFF' alt="" /></SwiperSlide>
             </Swiper>
+
+            {/* tourist spot section */}
+            <section>
+                <div>
+                    <div className="card card-compact bg-base-100 w-96 shadow-xl">
+                        <figure>
+                            <img
+                                src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                                alt="Shoes" />
+                        </figure>
+                        <div className="card-body">
+                            <h2 className="card-title">Shoes!</h2>
+                            <p>If a dog chews shoes whose shoes does he choose?</p>
+                            <div className="card-actions justify-end">
+                                <button className="btn btn-primary">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     );
 };
