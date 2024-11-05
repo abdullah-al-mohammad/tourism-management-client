@@ -8,7 +8,7 @@ import profile from '../../assets/profile.png'
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false)
-    const {user} = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
     const links = <>
         <li>
             <NavLink to='/'>Home</NavLink>
@@ -59,22 +59,28 @@ const Header = () => {
                 <div>
                     {
                         user ? <img className='w-8 h-8 rounded-full'
-                         src={user?.photoURL}
-                          alt=""
-                          title={user.displayName}
-                           /> 
-                           : 
-                           <img className='w-8 h-8 rounded-full'
-                            src={profile}
-                             alt=""
-                             title='Guest'
-                              />
+                            src={user?.photoURL}
+                            alt=""
+                            title={user.displayName}
+                        />
+                            :
+                            <img className='w-8 h-8 rounded-full'
+                                src={profile}
+                                alt=""
+                                title='Guest'
+                            />
                     }
                 </div>
-                <div>
-                    <Link to='/login'><button className='btn btn-link'>Sign In</button></Link>
-                    <span>or</span>
-                    <Link to='/register'><button className='btn btn-link'>Register</button></Link>
+                <div className='ml-3'>
+                    {
+                        user ? <button className='btn btn-active text-red-600'>Logout</button>
+                            :
+                            <div>
+                                <Link to='/login'><button className='btn btn-link'>Sign In</button></Link>
+                                <span>or</span>
+                                <Link to='/register'><button className='btn btn-link'>Register</button></Link>
+                            </div>
+                    }
                 </div>
             </div>
         </div>
