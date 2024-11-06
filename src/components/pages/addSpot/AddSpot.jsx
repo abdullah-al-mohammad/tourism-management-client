@@ -4,26 +4,6 @@ import { CgPassword } from 'react-icons/cg';
 
 const AddSpot = () => {
 
-    // const [formData, setFormData] = useState({
-    //     url: '',
-    //     spot: '',
-    //     country: '',
-    //     location: '',
-    //     description: '',
-    //     cost: '',
-    //     season: '',
-    //     time: '',
-    //     visitor: ''
-    // });
-
-    // const handleChange = (e) => {
-    //     const { name, value } = e.target;
-    //     setFormData({
-    //         ...formData,
-    //         [name]: value
-    //     });
-    // };
-
     const handleSubmit = (e) => {
         e.preventDefault();
         const form = new FormData(e.currentTarget)
