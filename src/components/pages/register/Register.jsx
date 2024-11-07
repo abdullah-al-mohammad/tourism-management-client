@@ -20,9 +20,11 @@ const Register = () => {
         const url = form.get('url')
         const password = form.get('password')
         console.log(name, email, url, password);
-        // clean 
+        
+        // clean error and success
         setError('')
         setSuccess('')
+
         if (password.length < 6) {
             return setError('Error: password must be 6 character')
         } else if (!/[A-Z]/.test(password)) {

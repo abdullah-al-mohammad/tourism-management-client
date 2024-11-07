@@ -1,10 +1,11 @@
 import React from 'react';
 import { useState } from 'react'
-import { CgPassword } from 'react-icons/cg';
+import Swal from 'sweetalert2'
 
 const AddSpot = () => {
 
     const handleSubmit = (e) => {
+        // const [success, setSuccess] = useState()
         e.preventDefault();
         const form = new FormData(e.currentTarget)
         const url = form.get('url')
@@ -20,7 +21,11 @@ const AddSpot = () => {
         const password = form.get('password')
         const touristSpotData = {url, spot, country, location, description, cost, season, time, visitor, email, password}
         console.log("Form Data:", touristSpotData);
+        // clean the box
+        // setSuccess('')
+        
         // Add form submission logic here, like saving to Firebase or Google Sheets
+        
         fetch('http://localhost:5000/addSpot', {
             method: "POST",
             headers: {
@@ -31,6 +36,8 @@ const AddSpot = () => {
         .then(res => res.json())
         .then(data => {
             console.log(data);
+            Swal.fire("Information save successfully✔");
+            e.target.reset()
             
         })
         

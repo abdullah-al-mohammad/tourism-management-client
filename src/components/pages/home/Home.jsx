@@ -35,24 +35,31 @@ const Home = () => {
             </Swiper>
 
             {/* tourist spot section */}
-            <section>
-                <h1>Tourist Spot</h1>
-                <div>
+            <section className='my-3 container mx-auto'>
+                <h1 className='text-center text-4xl mb-5'>Tourist Spot</h1>
+                <div className='grid grid-cols-3 gap-2'>
                     {
-                        touristSpot.map(spot => <div key={spot._id} className="card card-compact bg-base-100 w-96 shadow-xl">
-                            <figure>
-                                <img
-                                    src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                                    alt="Shoes" />
-                            </figure>
-                            <div className="card-body">
-                                <h2 className="card-title">Shoes!</h2>
-                                <p>If a dog chews shoes whose shoes does he choose?</p>
-                                <div className="card-actions justify-end">
-                                    <button className="btn btn-primary">View Details Page</button>
+                        touristSpot.map(spot => {
+                            const { _id, url, spot, description } = spot;
+
+                            return (
+                                <div key={_id} className="card card-compact bg-base-100 w-96 shadow-xl">
+                                    <figure>
+                                        <img
+                                            src={url}
+                                            alt="spot" />
+                                    </figure>
+                                    <div className="card-body">
+                                        <h2 className="card-title">Shoes!</h2>
+                                        <p>If a dog chews shoes whose shoes does he choose?</p>
+                                        <div className="card-actions justify-end">
+                                            <button className="btn btn-primary">View Details Page</button>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>)
+                            )
+                        }
+                        )
                     }
                 </div>
             </section>

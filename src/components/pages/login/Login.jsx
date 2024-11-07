@@ -1,16 +1,17 @@
 import React from 'react';
 import { FaEye, FaEyeSlash, FaFacebook, FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react'
 import { AuthContext } from '../../provider/AuthProvider';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import auth from '../../../../firebase.config';
 
 const Login = () => {
-
+    const [success, setSuccess] = useState()
     const { signInUser } = useContext(AuthContext)
     const googleProvider = new GoogleAuthProvider()
     const [showPassword, setShowPassword] = useState()
+    const navigate = useNavigate()
 
     const handleSignIn = e => {
         e.preventDefault()
@@ -19,11 +20,17 @@ const Login = () => {
         const password = form.get('password')
         console.log(email, password);
 
+        // reset error and success
+        setSuccess('')
+
         // create user auth
         signInUser(email, password)
             .then((result) => {
                 const user = result.user
                 console.log(user);
+                navigate('/')
+                setSuccess('User LoggedIn successfully')
+
 
             })
             .catch((error) => {
@@ -41,6 +48,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user
                 console.log(user);
+                navigate('/')
 
             })
             .catch(error => {
@@ -95,6 +103,9 @@ const Login = () => {
                             <button className="btn ml-2"><FaFacebook></FaFacebook></button>
                         </div>
                     </form>
+                    {
+                        <p className='text-green-600'>{success}</p>
+                    }
                 </div>
             </div>
         </div>
