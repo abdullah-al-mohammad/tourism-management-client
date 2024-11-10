@@ -9,6 +9,7 @@ import Main from '../../layout/main/Main';
 import Register from '../pages/register/Register';
 import Login from '../pages/login/Login';
 import AddSpot from '../pages/addSpot/AddSpot';
+import ViewDetails from '../pages/viewDetails/ViewDetails';
 
 const router = createBrowserRouter([
     {
@@ -29,8 +30,13 @@ const router = createBrowserRouter([
                 element: <Login></Login>
             },
             {
-                path: 'addSpot',
+                path: '/addSpot',
                 element: <AddSpot></AddSpot>
+            },
+            {
+                path: '/viewDetails/:detailsId',
+                element: <ViewDetails></ViewDetails>,
+                loader: ({params}) => fetch(`http://localhost:5000/addSpot/${params.detailsId}`)
             }
         ]
     },
