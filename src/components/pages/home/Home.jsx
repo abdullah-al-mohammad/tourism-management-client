@@ -40,7 +40,7 @@ const Home = () => {
                 <div className='grid grid-cols-3 gap-2'>
                     {
                         touristSpot.map(visitSpot => {
-                            const { _id, url, spot, description } = visitSpot   ;
+                            const { _id, url, spot, description } = visitSpot;
 
                             return (
                                 <div key={_id} className="card card-compact bg-base-100 w-96 shadow-xl">
@@ -53,7 +53,7 @@ const Home = () => {
                                         <h2 className="card-title">{spot}</h2>
                                         <p>{description}</p>
                                         <div className="card-actions justify-end">
-                                            <Link to={`/viewDetails/${_id}`} className="btn btn-primary">View Details Page</Link>
+                                            <Link to={`/viewDetails/${visitSpot._id}`} className="btn btn-primary">View Details Page</Link>
                                         </div>
                                     </div>
                                 </div>
@@ -63,6 +63,7 @@ const Home = () => {
                     }
                 </div>
             </section>
+            
         </div>
     );
 };
