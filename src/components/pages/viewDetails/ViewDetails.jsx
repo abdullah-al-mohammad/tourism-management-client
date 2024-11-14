@@ -1,13 +1,22 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { useState, useEffect } from 'react'
 
 const ViewDetails = () => {
-    const data = useLoaderData()
+    const allData = useLoaderData()
+    const [data, setData] = useState(allData)
     console.log(data);
-    
-   const {url, spot, country, location, description, cost, season, time, visitor, email, password} = data
-    
-    
+
+    useEffect(() => {
+        setData(allData)
+    }, [allData])
+
+    if (!data) {
+        return <div>Loading......</div>
+    }
+    const { url, spot, country, location, description, cost, season, time, visitor, email, password } = data
+
+
     return (
         <div className="card card-compact bg-base-100 shadow-xl">
             <figure>
