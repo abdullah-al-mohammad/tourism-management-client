@@ -32,7 +32,7 @@ const Register = () => {
         } else if (!/[a-z]/.test(password)) {
             return setError('Error: password should be one lowercase')
         } else {
-            setSuccess('Account Crate Successfull')
+            setSuccess('Account Crate Successfully')
         }
         // create user auth
         createUser(email, password)

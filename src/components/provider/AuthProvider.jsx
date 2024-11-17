@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import React from 'react';
 import {createContext, useState, useEffect} from 'react'
 import auth from '../../../firebase.config';
@@ -17,6 +17,11 @@ const AuthProvider = ({children}) => {
     // login user profile
     const signInUser = ( email, password) =>{
         return signInWithEmailAndPassword(auth, email, password)
+    }
+
+    // logOut user
+    const signOutUser = () =>{
+        return signOut(auth)
     }
 
     useEffect(() => {
@@ -38,7 +43,8 @@ const AuthProvider = ({children}) => {
     const userInfo ={
         user,
         createUser,
-        signInUser
+        signInUser,
+        signOutUser
 
     }
     return (

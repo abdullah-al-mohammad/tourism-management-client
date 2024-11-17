@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaEye, FaEyeSlash, FaFacebook, FaGoogle } from 'react-icons/fa';
-import { Link, useNavigate } from 'react-router-dom';
+import { json, Link, useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react'
 import { AuthContext } from '../../provider/AuthProvider';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
@@ -31,11 +31,26 @@ const Login = () => {
                 navigate('/')
                 setSuccess('User LoggedIn successfully')
 
+                // user information send to mongodb
+                fetch('http://localhost:5000/user', {
+                    method: "POST",
+                    headers: {
+                        'content-type' : 'application/json'
+                    },
+                    body: JSON.stringify(user)
+                })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    
+                })
+
 
             })
             .catch((error) => {
-                const errorCode = error.code
-                console.log(errorCode);
+                console.error(error);
+                
+                
 
 
             })

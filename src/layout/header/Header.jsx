@@ -5,10 +5,11 @@ import { TfiAlignJustify } from 'react-icons/tfi';
 import { AiOutlineClose } from 'react-icons/ai';
 import { AuthContext } from '../../components/provider/AuthProvider';
 import profile from '../../assets/profile.png'
+import Swal from 'sweetalert2';
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false)
-    const { user } = useContext(AuthContext)
+    const { user, signOutUser } = useContext(AuthContext)
     const links = <>
         <li>
             <NavLink to='/'>Home</NavLink>
@@ -23,6 +24,17 @@ const Header = () => {
             <NavLink to='/myList'>My List</NavLink>
         </li>
     </>
+
+
+const handleSignOut = () => {
+    signOutUser()
+    .then(() => {
+        Swal.fire("logout successfully");
+    }) .catch((error) =>{
+        console.error(error);
+        
+    })
+}
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start">
@@ -73,7 +85,7 @@ const Header = () => {
                 </div>
                 <div className='ml-3'>
                     {
-                        user ? <button className='btn btn-active text-red-600'>Logout</button>
+                        user ? <button onClick={handleSignOut} className='btn btn-active text-red-600'>Logout</button>
                             :
                             <div>
                                 <Link to='/login'><button className='btn btn-link'>Sign In</button></Link>
