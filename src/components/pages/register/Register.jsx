@@ -20,7 +20,7 @@ const Register = () => {
         const url = form.get('url')
         const password = form.get('password')
         console.log(name, email, url, password);
-        
+
         // clean error and success
         setError('')
         setSuccess('')
@@ -108,10 +108,10 @@ const Register = () => {
                             </label>
                         </div>
                         <div className="form-control mt-6">
-                            <p>Already have an account please? <Link to='/login'><button className="btn-link font-bold">Login</button></Link></p>
+                            <button className="btn btn-primary">Register</button>
                         </div>
                         <div className="form-control mt-6">
-                            <button className="btn btn-primary">Register</button>
+                            <p>Already have an account please? <Link to='/login'><button className="btn-link font-bold">Login</button></Link></p>
                         </div>
                     </form>
                     <p className='text-red-600 p-4'>{error}</p>

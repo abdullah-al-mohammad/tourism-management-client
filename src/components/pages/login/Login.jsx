@@ -35,22 +35,22 @@ const Login = () => {
                 fetch('http://localhost:5000/user', {
                     method: "POST",
                     headers: {
-                        'content-type' : 'application/json'
+                        'content-type': 'application/json'
                     },
                     body: JSON.stringify(user)
                 })
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data);
-                    
-                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+
+                    })
 
 
             })
             .catch((error) => {
                 console.error(error);
-                
-                
+
+
 
 
             })
@@ -93,25 +93,25 @@ const Login = () => {
                                 <span className="label-text">Password</span>
                             </label>
                             <div className='relative'>
-                                <input type={showPassword? "text" : 'password'}
+                                <input type={showPassword ? "text" : 'password'}
                                     placeholder="password"
                                     name='password'
                                     className="input input-bordered w-full" required />
-                                    <p className='right-3 bottom-4 absolute' onClick={() => setShowPassword(!showPassword)}>
-                                        {
-                                            showPassword? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>
-                                        }
-                                    </p>
+                                <p className='right-3 bottom-4 absolute' onClick={() => setShowPassword(!showPassword)}>
+                                    {
+                                        showPassword ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>
+                                    }
+                                </p>
                             </div>
                             <label className="label">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>
                         </div>
                         <div className="form-control mt-6">
-                            <p>Don't have an account please?<Link to='/register'><button className="btn-link font-bold">Register</button></Link></p>
+                            <button className="btn btn-primary">Login</button>
                         </div>
                         <div className="form-control mt-6">
-                            <button className="btn btn-primary">Login</button>
+                            <p>Don't have an account please?<Link to='/register'><button className="btn-link font-bold">Register</button></Link></p>
                         </div>
                         <div className="flex mt-6">
                             <button onClick={handleGoogleSignUp} className="btn"><FaGoogle></FaGoogle></button>
