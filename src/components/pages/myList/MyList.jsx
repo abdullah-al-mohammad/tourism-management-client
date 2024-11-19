@@ -1,29 +1,15 @@
 import React from 'react';
-import { useEffect, useState } from 'react'
-import { useLoaderData } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 
 const MyList = () => {
-    const userInfo = useLoaderData()
-    console.log(userInfo);
-    // const {email} = userInfo
-    
 
     return (
-        <div>
-            <h1>User List:{userInfo.length} </h1>
-           <div>
-                {
-                    userInfo.map(user => {
-                        const {email, displayName} = user
-                        return(
-                            <div>
-                                <h1>{email}</h1>
-                                <h1>{displayName}</h1>
-                            </div>
-                        )
-                    })
-                }
-           </div>
+        <div className='card-body'>
+            <h1 className='text-5xl text-center mb-4'>You don’t add any spots yet</h1>
+            <div className='mx-auto'>
+                <Link className='btn btn-link border border-cyan-600' to='/addSpot'>Add Spot</Link>
+            </div>
         </div>
     );
 };

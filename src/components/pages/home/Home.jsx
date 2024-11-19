@@ -13,7 +13,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 
 const Home = () => {
     const touristSpot = useLoaderData()
-    console.log(touristSpot);
+    // console.log(touristSpot);
 
     return (
         <div>
@@ -63,7 +63,6 @@ const Home = () => {
                     }
                 </div>
             </section>
-            
         </div>
     );
 };

@@ -1,8 +1,29 @@
 import React from 'react';
-import { useState } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import Swal from 'sweetalert2'
+import { AuthContext } from '../../provider/AuthProvider';
+import { useLoaderData } from 'react-router-dom';
 
 const AddSpot = () => {
+    const {user} = useContext(AuthContext)
+    // const user = useLoaderData()
+    console.log(user);
+
+    useEffect(() => {
+
+        fetch('http://localhost:5000/user', {
+            method: "GET",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user.email)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            })
+    })
+
 
     const handleSubmit = (e) => {
         // const [success, setSuccess] = useState()
@@ -17,15 +38,15 @@ const AddSpot = () => {
         const season = form.get('season')
         const time = form.get('cost')
         const visitor = form.get('visitor')
-        const email = form.get('email')
+        const creator = form.get('email')
         const password = form.get('password')
-        const touristSpotData = {url, spot, country, location, description, cost, season, time, visitor, email, password}
+        const touristSpotData = { url, spot, country, location, description, cost, season, time, visitor, email, password }
         console.log("Form Data:", touristSpotData);
         // clean the box
         // setSuccess('')
-        
+
         // Add form submission logic here, like saving to Firebase or Google Sheets
-        
+
         fetch('http://localhost:5000/addSpot', {
             method: "POST",
             headers: {
@@ -33,14 +54,14 @@ const AddSpot = () => {
             },
             body: JSON.stringify(touristSpotData)
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            Swal.fire("Information save successfully✔");
-            e.target.reset()
-            
-        })
-        
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                Swal.fire("Information save successfully✔");
+                e.target.reset()
+
+            })
+
     };
 
     return (

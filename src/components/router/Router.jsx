@@ -13,6 +13,7 @@ import ViewDetails from '../pages/viewDetails/ViewDetails';
 import AllTouristSpot from '../pages/allTouristSpot/AllTouristSpot';
 import MyList from '../pages/myList/MyList';
 import PrivateRouter from './privateRouter/PrivateRouter';
+import Users from '../pages/users/Users';
 
 const router = createBrowserRouter([
     {
@@ -47,9 +48,13 @@ const router = createBrowserRouter([
                 loader: () => fetch('http://localhost:5000/addSpot')
             },
             {
+                path: '/users',
+                element: <Users></Users>,
+                loader: () => fetch('http://localhost:5000/user'),
+            },
+            {
                 path: '/myList',
-                element: <MyList></MyList>,
-                loader: () => fetch('http://localhost:5000/user')
+                element: <MyList></MyList>
             }
         ]
     },
