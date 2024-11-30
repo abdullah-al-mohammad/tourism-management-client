@@ -2,27 +2,28 @@ import React from 'react';
 import { useState, useContext, useEffect } from 'react'
 import Swal from 'sweetalert2'
 import { AuthContext } from '../../provider/AuthProvider';
-import { useLoaderData } from 'react-router-dom';
 
 const AddSpot = () => {
-    // const { user } = useContext(AuthContext)
-    // const user = useLoaderData()
-    // console.log(user);
+    const { user } = useContext(AuthContext)
+    // console.log(user.email);
+    const [creatorId, setCreatorId] = useState()
+    // console.log(creatorId.email);
+    
 
     useEffect(() => {
 
-        fetch(`http://localhost:5000/user`, {
+        fetch(`http://localhost:5000/user?e=${user?.email}`, {
             method: "GET",
             headers: {
                 'content-type': 'application/json'
-            },
-            // body: JSON.stringify(user.email)
+            }
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                setCreatorId(data)
+                
             })
-    })
+    }, [user?.email])
 
 
     const handleSubmit = (e) => {
@@ -38,10 +39,11 @@ const AddSpot = () => {
         const season = form.get('season')
         const time = form.get('cost')
         const visitor = form.get('visitor')
-        const creator = form.get('email')
+        const creator = creatorId._id
         const name = form.get('name')
-        const touristSpotData = { url, spot, country, location, description, cost, season, time, visitor, email, password }
+        const touristSpotData = { url, spot, country, location, description, cost, season, time, visitor, creator, name }
         console.log("Form Data:", touristSpotData);
+
         // clean the box
         // setSuccess('')
 
