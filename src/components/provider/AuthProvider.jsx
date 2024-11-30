@@ -27,10 +27,10 @@ const AuthProvider = ({children}) => {
     useEffect(() => {
       const unsubsCribe =  onAuthStateChanged(auth, currentUser =>{
         setUser(currentUser)
-            // if(currentUser){
-            //     console.log(currentUser);
+            if(currentUser){
+                console.log(currentUser);
                 
-            // }
+            }
         })
         // Cleanup subscription on unmount
         return() =>{

@@ -26,8 +26,8 @@ const Home = () => {
                 navigation
                 autoplay
                 pagination={{ clickable: true }}
-                onSlideChange={() => console.log('slide change')}
-                onSwiper={(swiper) => console.log(swiper)}
+                // onSlideChange={() => console.log('slide change')}
+                // onSwiper={(swiper) => console.log(swiper)}
             >
                 <SwiperSlide><img className='' src='https://placehold.co/1950x600/000000/FFF' alt="" /></SwiperSlide>
                 <SwiperSlide><img className='' src='https://placehold.co/1950x600/000000/FFF' alt="" /></SwiperSlide>
