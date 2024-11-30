@@ -48,7 +48,6 @@ const AddSpot = () => {
         // setSuccess('')
 
         // Add form submission logic here, like saving to Firebase or Google Sheets
-
         fetch('http://localhost:5000/addSpot', {
             method: "POST",
             headers: {
