@@ -5,13 +5,13 @@ import { AuthContext } from '../../provider/AuthProvider';
 import { useLoaderData } from 'react-router-dom';
 
 const AddSpot = () => {
-    // const { user } = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
     // const user = useLoaderData()
     // console.log(user);
 
     useEffect(() => {
 
-        fetch(`http://localhost:5000/user`, {
+        fetch(`http://localhost:5000/user?e=${user?.email}`, {
             method: "GET",
             headers: {
                 'content-type': 'application/json'
