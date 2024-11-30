@@ -5,9 +5,9 @@ import Router from './components/router/Router.jsx'
 import AuthProvider from './components/provider/AuthProvider.jsx'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <AuthProvider>
-      <Router></Router>
-    </AuthProvider>
-  </StrictMode>,
+	<StrictMode>
+		<AuthProvider>
+			<Router></Router>
+		</AuthProvider>
+	</StrictMode>,
 )

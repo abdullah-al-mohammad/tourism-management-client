@@ -12,59 +12,59 @@ import { Link, useLoaderData } from 'react-router-dom';
 // import Header from '../../../layout/header/Header';
 
 const Home = () => {
-    const touristSpot = useLoaderData()
-    // console.log(touristSpot);
+	const touristSpot = useLoaderData()
+	// console.log(touristSpot);
 
-    return (
-        <div>
-            <Swiper
-                className=''
-                modules={[Navigation, Pagination, A11y, EffectFade, Autoplay]}
-                spaceBetween={50}
-                slidesPerView={1}
-                effect='fade'
-                navigation
-                autoplay
-                pagination={{ clickable: true }}
-                // onSlideChange={() => console.log('slide change')}
-                // onSwiper={(swiper) => console.log(swiper)}
-            >
-                <SwiperSlide><img className='' src='https://placehold.co/1950x600/000000/FFF' alt="" /></SwiperSlide>
-                <SwiperSlide><img className='' src='https://placehold.co/1950x600/000000/FFF' alt="" /></SwiperSlide>
-                <SwiperSlide><img className='' src='https://placehold.co/1950x600/000000/FFF' alt="" /></SwiperSlide>
-            </Swiper>
+	return (
+		<div>
+			<Swiper
+				className=''
+				modules={[Navigation, Pagination, A11y, EffectFade, Autoplay]}
+				spaceBetween={50}
+				slidesPerView={1}
+				effect='fade'
+				navigation
+				autoplay
+				pagination={{ clickable: true }}
+			// onSlideChange={() => console.log('slide change')}
+			// onSwiper={(swiper) => console.log(swiper)}
+			>
+				<SwiperSlide><img className='' src='https://placehold.co/1950x600/000000/FFF' alt="" /></SwiperSlide>
+				<SwiperSlide><img className='' src='https://placehold.co/1950x600/000000/FFF' alt="" /></SwiperSlide>
+				<SwiperSlide><img className='' src='https://placehold.co/1950x600/000000/FFF' alt="" /></SwiperSlide>
+			</Swiper>
 
-            {/* tourist spot section */}
-            <section className='my-3 container mx-auto'>
-                <h1 className='text-center text-4xl mb-5'>Tourist Spot</h1>
-                <div className='grid grid-cols-3 gap-2'>
-                    {
-                        touristSpot.map(visitSpot => {
-                            const { _id, url, spot, description } = visitSpot;
+			{/* tourist spot section */}
+			<section className='my-3 container mx-auto'>
+				<h1 className='text-center text-4xl mb-5'>Tourist Spot</h1>
+				<div className='grid grid-cols-3 gap-2'>
+					{
+						touristSpot.map(visitSpot => {
+							const { _id, url, spot, description } = visitSpot;
 
-                            return (
-                                <div key={_id} className="card card-compact bg-base-100 w-96 shadow-xl">
-                                    <figure>
-                                        <img
-                                            src={url}
-                                            alt="spot" />
-                                    </figure>
-                                    <div className="card-body">
-                                        <h2 className="card-title">{spot}</h2>
-                                        <p>{description}</p>
-                                        <div className="card-actions justify-end">
-                                            <Link to={`/viewDetails/${visitSpot._id}`} className="btn btn-primary">View Details Page</Link>
-                                        </div>
-                                    </div>
-                                </div>
-                            )
-                        }
-                        )
-                    }
-                </div>
-            </section>
-        </div>
-    );
+							return (
+								<div key={_id} className="card card-compact bg-base-100 w-96 shadow-xl">
+									<figure>
+										<img
+											src={url}
+											alt="spot" />
+									</figure>
+									<div className="card-body">
+										<h2 className="card-title">{spot}</h2>
+										<p>{description}</p>
+										<div className="card-actions justify-end">
+											<Link to={`/viewDetails/${visitSpot._id}`} className="btn btn-primary">View Details Page</Link>
+										</div>
+									</div>
+								</div>
+							)
+						}
+						)
+					}
+				</div>
+			</section>
+		</div>
+	);
 };
 
 export default Home;

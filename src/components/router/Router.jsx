@@ -1,8 +1,8 @@
 import React from 'react';
 
 import {
-    createBrowserRouter,
-    RouterProvider,
+	createBrowserRouter,
+	RouterProvider,
 } from "react-router-dom";
 import Home from '../pages/home/Home';
 import Main from '../../layout/main/Main';
@@ -16,55 +16,55 @@ import PrivateRouter from './privateRouter/PrivateRouter';
 import Users from '../pages/users/Users';
 
 const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <Main></Main>,
-        children: [
-            {
-                path: "/",
-                element: <Home></Home>,
-                loader: () => fetch('http://localhost:5000/addSpot')
-            },
-            {
-                path: '/register',
-                element: <Register></Register>
-            },
-            {
-                path: '/login',
-                element: <Login></Login>
-            },
-            {
-                path: '/addSpot',
-                element: <PrivateRouter><AddSpot></AddSpot></PrivateRouter>
-            },
-            {
-                path: '/viewDetails/:detailsId',
-                element: <PrivateRouter><ViewDetails></ViewDetails></PrivateRouter>,
-                loader: ({ params }) => fetch(`http://localhost:5000/addSpot/${params.detailsId}`)
-            },
-            {
-                path: '/allSpot',
-                element: <AllTouristSpot></AllTouristSpot>,
-                loader: () => fetch('http://localhost:5000/addSpot')
-            },
-            {
-                path: '/users',
-                element: <Users></Users>,
-                loader: () => fetch('http://localhost:5000/user'),
-            },
-            {
-                path: '/myList',
-                element: <PrivateRouter><MyList></MyList></PrivateRouter>
-            }
-        ]
-    },
+	{
+		path: "/",
+		element: <Main></Main>,
+		children: [
+			{
+				path: "/",
+				element: <Home></Home>,
+				loader: () => fetch('http://localhost:5000/addSpot')
+			},
+			{
+				path: '/register',
+				element: <Register></Register>
+			},
+			{
+				path: '/login',
+				element: <Login></Login>
+			},
+			{
+				path: '/addSpot',
+				element: <PrivateRouter><AddSpot></AddSpot></PrivateRouter>
+			},
+			{
+				path: '/viewDetails/:detailsId',
+				element: <PrivateRouter><ViewDetails></ViewDetails></PrivateRouter>,
+				loader: ({ params }) => fetch(`http://localhost:5000/addSpot/${params.detailsId}`)
+			},
+			{
+				path: '/allSpot',
+				element: <AllTouristSpot></AllTouristSpot>,
+				loader: () => fetch('http://localhost:5000/addSpot')
+			},
+			{
+				path: '/users',
+				element: <Users></Users>,
+				loader: () => fetch('http://localhost:5000/user'),
+			},
+			{
+				path: '/myList',
+				element: <PrivateRouter><MyList></MyList></PrivateRouter>
+			}
+		]
+	},
 ]);
 const Router = () => {
-    return (
-        <React.StrictMode>
-            <RouterProvider router={router} />
-        </React.StrictMode>
-    );
+	return (
+		<React.StrictMode>
+			<RouterProvider router={router} />
+		</React.StrictMode>
+	);
 };
 
 export default Router;
