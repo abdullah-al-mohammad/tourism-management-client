@@ -7,20 +7,24 @@ export const AuthContext = createContext(null)
 
 const AuthProvider = ({ children }) => {
 	const [user, setUser] = useState(null)
+	const [loading, setLoading] = useState(true)
 
 
 	// create user profile
 	const createUser = (email, password) => {
+		setLoading(true)
 		return createUserWithEmailAndPassword(auth, email, password)
 
 	}
 	// login user profile
 	const signInUser = (email, password) => {
+		setLoading(true)
 		return signInWithEmailAndPassword(auth, email, password)
 	}
 
 	// logOut user
 	const signOutUser = () => {
+		setLoading(true)
 		return signOut(auth)
 	}
 
@@ -29,6 +33,7 @@ const AuthProvider = ({ children }) => {
 			setUser(currentUser)
 			if (currentUser) {
 				console.log(currentUser);
+				setLoading(false)
 
 			}
 		})

@@ -1,8 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react'
 
 
 const MyList = () => {
+	useEffect(() => {
+	  fetch('http://localhost:5000/addSpot')
+	  .then(res => res.json())
+	  .then(data => {
+		console.log(data);
+		
+	  })
+	}, [])
+	
 
 	return (
 		<div className='card-body'>

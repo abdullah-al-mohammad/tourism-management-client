@@ -4,7 +4,7 @@ import Swal from 'sweetalert2'
 import { AuthContext } from '../../provider/AuthProvider';
 
 const AddSpot = () => {
-	const { user } = useContext(AuthContext)
+	const { user, loading } = useContext(AuthContext)
 	const [creatorId, setCreatorId] = useState()
 	console.log(creatorId);
 
@@ -61,8 +61,14 @@ const AddSpot = () => {
 				e.target.reset()
 
 			})
-
 	};
+
+
+	if (loading) {
+		return (
+			<span className="loading loading-bars loading-xs"></span>
+		)
+	}
 
 	return (
 		<div className="container mx-auto">
