@@ -38,14 +38,14 @@ const router = createBrowserRouter([
 				element: <PrivateRouter><AddSpot></AddSpot></PrivateRouter>
 			},
 			{
-				path: '/viewDetails/:detailsId',
-				element: <PrivateRouter><ViewDetails></ViewDetails></PrivateRouter>,
-				loader: ({ params }) => fetch(`http://localhost:5000/addSpot/${params.detailsId}`)
-			},
-			{
 				path: '/allSpot',
 				element: <AllTouristSpot></AllTouristSpot>,
 				loader: () => fetch('http://localhost:5000/addSpot')
+			},
+			{
+				path: '/viewDetails/:detailsId',
+				element: <PrivateRouter><ViewDetails></ViewDetails></PrivateRouter>,
+				loader: ({ params }) => fetch(`http://localhost:5000/addSpot/${params.detailsId}`)
 			},
 			{
 				path: '/users',

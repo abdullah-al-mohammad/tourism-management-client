@@ -14,7 +14,7 @@ const ViewDetails = () => {
 	if (!data) {
 		return <div>Loading......</div>
 	}
-	const { url, spot, country, location, description, cost, season, time, visitor, email, password } = data
+	const { url, spot, country, location, description, cost, season } = data
 
 
 	return (
