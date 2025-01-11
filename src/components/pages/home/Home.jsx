@@ -47,7 +47,7 @@ const Home = () => {
 									<figure>
 										<img
 											src={url}
-											alt="spot" />
+											alt="img" />
 									</figure>
 									<div className="card-body">
 										<h2 className="card-title">{spot}</h2>

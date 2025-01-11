@@ -18,7 +18,7 @@ const Login = () => {
 		const form = new FormData(e.currentTarget)
 		const email = form.get('email')
 		const password = form.get('password')
-		console.log(email, password);
+		// console.log(email, password);
 
 		// reset error and success
 		setSuccess('')
@@ -27,7 +27,7 @@ const Login = () => {
 		signInUser(email, password)
 			.then((result) => {
 				const user = result.user
-				console.log(user);
+				// console.log(user);
 				navigate('/')
 				setSuccess('User LoggedIn successfully')
 			})
@@ -42,7 +42,7 @@ const Login = () => {
 		signInWithPopup(auth, googleProvider)
 			.then(result => {
 				const user = result.user
-				console.log(user);
+				// console.log(user);
 				navigate('/')
 
 			})

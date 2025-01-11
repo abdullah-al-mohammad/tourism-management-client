@@ -5,7 +5,7 @@ import { AuthContext } from '../../provider/AuthProvider';
 
 const AddSpot = () => {
 	const { user, loading } = useContext(AuthContext)
-	console.log(user);
+	// console.log(user);
 
 	const [creatorId, setCreatorId] = useState()
 	console.log(creatorId);
@@ -40,7 +40,7 @@ const AddSpot = () => {
 		const season = form.get('season')
 		const time = form.get('cost')
 		const visitor = form.get('visitor')
-		// const creator = creatorId._id
+		const creator = creatorId._id
 		const email = user?.email
 		const name = user?.displayName
 		const touristSpotData = {
@@ -53,7 +53,7 @@ const AddSpot = () => {
 			season,
 			time,
 			visitor,
-			// creator,
+			creator,
 			userEmail: email,
 			userName: name
 		}
@@ -160,13 +160,13 @@ const AddSpot = () => {
 									<label className="label">
 										<span className="label-text">Email</span>
 									</label>
-									<input type="email" placeholder="Your Email" name='email' value={user?.email} className="input input-bordered" required />
+									<input type="email" placeholder="Your Email" name='email' defaultValue={user?.email} className="input input-bordered" required />
 								</div>
 								<div className="form-control">
 									<label className="label">
 										<span className="label-text">Name</span>
 									</label>
-									<input type="text" placeholder="Your name" name='name' value={user?.displayName} className="input input-bordered" required />
+									<input type="text" placeholder="Your name" name='name' defaultValue={user?.displayName} className="input input-bordered" required />
 								</div>
 							</div>
 						</div>

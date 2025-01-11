@@ -32,7 +32,7 @@ const AuthProvider = ({ children }) => {
 		const unsubsCribe = onAuthStateChanged(auth, currentUser => {
 			setUser(currentUser)
 			if (currentUser) {
-				console.log(currentUser);
+				// console.log(currentUser);
 				setLoading(false)
 
 			}
