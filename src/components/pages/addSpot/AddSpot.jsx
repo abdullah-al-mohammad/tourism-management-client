@@ -44,7 +44,7 @@ const AddSpot = () => {
 		const email = user?.email
 		const name = user?.displayName
 		const touristSpotData = {
-			image: url,
+			url,
 			spot,
 			country,
 			location,
@@ -54,7 +54,7 @@ const AddSpot = () => {
 			time,
 			visitor,
 			creator,
-			userEmail: email,
+			email: email,
 			userName: name
 		}
 		console.log("Form Data:", touristSpotData);
@@ -148,7 +148,7 @@ const AddSpot = () => {
 									<label className="label">
 										<span className="label-text">Travel Time</span>
 									</label>
-									<input type="text" placeholder="e.g., 7 days" name='time' className="input input-bordered" required />
+									<input type="date" name='time' className="input input-bordered" required />
 								</div>
 								<div className="form-control">
 									<label className="label">
