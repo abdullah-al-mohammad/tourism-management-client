@@ -15,7 +15,7 @@ const AllTouristSpot = () => {
 			<div className='grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-2'>
 				{
 					allSpots.map(allSpot => {
-						const { url, spot, cost, season, time, visitor, _id } = allSpot
+						const { url, spot, travelCost, season, time, visitor, _id } = allSpot
 						return (
 							<div className="card card-compact bg-base-100 w-96 shadow-xl">
 								<figure>
@@ -25,7 +25,7 @@ const AllTouristSpot = () => {
 								</figure>
 								<div className="card-body">
 									<h2 className="card-title">Tourists_spot_name{spot}</h2>
-									<p>average_cost: {cost}</p>
+									<p>average_cost: {travelCost}</p>
 									<p>totalVisitorsPerYear: {visitor}</p>
 									<p>travel_time: {time}</p>
 									<p>seasonality: {season}</p>

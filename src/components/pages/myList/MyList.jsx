@@ -6,13 +6,15 @@ import { AuthContext } from '../../provider/AuthProvider';
 
 const MyList = () => {
 	const { user } = useContext(AuthContext)
-	const [myList, setMyLists] = useState()
+	const [myList, setMyLists] = useState([])
+	console.log(myList);
+
 	const url = `http://localhost:5000/addSpot?email=${user?.email}`
 	useEffect(() => {
 		fetch(url)
 			.then(res => res.json())
 			.then(data => {
-				console.log(data);
+				// console.log(data);
 				setMyLists(data)
 
 			})
@@ -21,7 +23,7 @@ const MyList = () => {
 
 	return (
 		<div className="card-body">
-		// 			{myList.length > 0 ? (
+			{myList.length > 0 ? (
 				<>
 					<h1 className="text-5xl text-center mb-4">My Added Spots</h1>
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -31,9 +33,9 @@ const MyList = () => {
 								<h2 className="text-xl font-bold">{spot.spot}</h2>
 								<p>{spot.description}</p>
 								<p><strong>Location:</strong> {spot.location}</p>
-								<p><strong>Cost:</strong> {spot.cost}</p>
+								<p><strong>Cost:</strong> {spot.travelCost}</p>
 								<Link
-									to={`/spotDetails/${spot._id}`}
+									to={`/viewDetails/${spot._id}`}
 									className="btn btn-link text-blue-600 mt-2"
 								>
 									View Details

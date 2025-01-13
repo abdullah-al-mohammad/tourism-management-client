@@ -38,7 +38,7 @@ const AddSpot = () => {
 		const description = form.get('description')
 		const cost = form.get('cost')
 		const season = form.get('season')
-		const time = form.get('cost')
+		const time = form.get('time')
 		const visitor = form.get('visitor')
 		const creator = creatorId._id
 		const email = user?.email
