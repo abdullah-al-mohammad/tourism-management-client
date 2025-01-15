@@ -6,9 +6,9 @@ import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 import 'swiper/css/autoplay';
 import { Link, useLoaderData } from 'react-router-dom';
-// import banner1 from '../../../assets/banner/banner1.jpg'
-// import banner2 from '../../../assets/banner/banner2.jpg'
-// import banner3 from '../../../assets/banner/banner3.jpg'
+import banner1 from '../../../assets/Bangkok-Thailand-4.jpg'
+import banner2 from '../../../assets/Phang-Nga-Bay-Phuket-Thailand.jpg'
+import banner3 from '../../../assets/Saint-Martin-Island-Bangladesh2.jpg'
 // import Header from '../../../layout/header/Header';
 
 const Home = () => {
@@ -16,7 +16,7 @@ const Home = () => {
 	// console.log(touristSpot);
 
 	return (
-		<div>
+		<div className='container mx-auto'>
 			<Swiper
 				className=''
 				modules={[Navigation, Pagination, A11y, EffectFade, Autoplay]}
@@ -26,17 +26,17 @@ const Home = () => {
 				navigation
 				autoplay
 				pagination={{ clickable: true }}
-			// onSlideChange={() => console.log('slide change')}
-			// onSwiper={(swiper) => console.log(swiper)}
+				onSlideChange={() => console.log('slide change')}
+				onSwiper={(swiper) => console.log(swiper)}
 			>
-				<SwiperSlide><img className='' src='https://placehold.co/1950x600/000000/FFF' alt="" /></SwiperSlide>
-				<SwiperSlide><img className='' src='https://placehold.co/1950x600/000000/FFF' alt="" /></SwiperSlide>
-				<SwiperSlide><img className='' src='https://placehold.co/1950x600/000000/FFF' alt="" /></SwiperSlide>
+				<SwiperSlide><img className='w-full h-96' src={banner1} alt="" /></SwiperSlide>
+				<SwiperSlide><img className='w-full h-96' src={banner2} alt="" /></SwiperSlide>
+				<SwiperSlide><img className='w-full h-96' src={banner3} alt="" /></SwiperSlide>
 			</Swiper>
 
 			{/* tourist spot section */}
 			<section className='my-3 container mx-auto'>
-				<h1 className='text-center text-4xl mb-5'>Tourist Spot</h1>
+				<h1 className='text-center text-4xl mb-5 font-serif'>Tourist Spots</h1>
 				<div className='grid grid-cols-3 gap-2'>
 					{
 						touristSpot.map(visitSpot => {
@@ -61,6 +61,13 @@ const Home = () => {
 						}
 						)
 					}
+				</div>
+			</section>
+			{/* section 2 */}
+			<section>
+				<h1 className='text-center text-4xl mb-5 font-serif'>Bangkok - The Vibrant City of Angels</h1>
+				<div>
+
 				</div>
 			</section>
 		</div>

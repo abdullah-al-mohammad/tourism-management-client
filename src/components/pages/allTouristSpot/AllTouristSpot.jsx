@@ -12,12 +12,12 @@ const AllTouristSpot = () => {
 	}
 	return (
 		<div className='container mx-auto'>
-			<div className='grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-2'>
+			<div className='grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-4'>
 				{
 					allSpots.map(allSpot => {
 						const { url, spot, travelCost, season, time, visitor, _id } = allSpot
 						return (
-							<div className="card card-compact bg-base-100 w-96 shadow-xl">
+							<div className="card card-compact bg-base-100 shadow-xl">
 								<figure>
 									<img
 										src={url}
@@ -25,12 +25,12 @@ const AllTouristSpot = () => {
 								</figure>
 								<div className="card-body">
 									<h2 className="card-title">Tourists_spot_name{spot}</h2>
-									<p>average_cost: {travelCost}</p>
-									<p>totalVisitorsPerYear: {visitor}</p>
-									<p>travel_time: {time}</p>
-									<p>seasonality: {season}</p>
+									<p><span className='font-semibold text-cyan-700'>average_cost:</span> {travelCost}</p>
+									<p><span className='font-semibold text-cyan-700'>totalVisitors:</span> {visitor}</p>
+									<p><span className='font-semibold text-cyan-700'>travel_time: </span>{time}</p>
+									<p><span className='font-semibold text-cyan-700'>seasonality:</span> {season}</p>
 									<div className="card-actions justify-end">
-										<button onClick={() => handleViewDetails(_id)} className="btn btn-primary">View Details</button>
+										<button onClick={() => handleViewDetails(_id)} className="btn btn-info">View Details</button>
 									</div>
 								</div>
 							</div>
