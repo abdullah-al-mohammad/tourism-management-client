@@ -29,19 +29,7 @@ const Login = () => {
 		signInUser(email, password)
 			.then((result) => {
 				const loggedInUser = result.user
-				// console.log(loggedInUser);
-				const user = { email }
-				// navigate('/')
-				axios.post('http://localhost:5000/jwt', user, {
-					withCredentials: true
-				})
-					.then(res => {
-						console.log(res.data);
-						if (res.data.success) {
-							navigate(location?.state ? location?.state : '/')
-						}
-
-					})
+				navigate(location?.state ? location?.state : '/')
 				setSuccess('User LoggedIn successfully')
 			})
 			.catch((error) => {

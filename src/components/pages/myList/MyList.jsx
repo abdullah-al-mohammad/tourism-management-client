@@ -11,7 +11,7 @@ const MyList = () => {
 
 	const url = `http://localhost:5000/addSpot?email=${user?.email}`
 	useEffect(() => {
-		axios.get(url, { withCredentials: true })
+		axios.get(url)
 			.then(res => {
 				setMyLists(res.data)
 			})
