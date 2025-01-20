@@ -3,25 +3,34 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react'
 import { AuthContext } from '../../provider/AuthProvider';
 import axios from 'axios';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 
 const MyList = () => {
 	const { user } = useContext(AuthContext)
 	const [myList, setMyLists] = useState([])
+	const axiosSecure = useAxiosSecure()
 
-	const url = `http://localhost:5000/addSpot?email=${user?.email}`
+	// const url = `http://localhost:5000/addSpot?email=${user?.email}`
+	const url = `/addSpot?email=${user?.email}`
 	useEffect(() => {
-		axios.get(url)
-			.then(res => {
-				setMyLists(res.data)
-			})
-		// fetch(url)
+		// axios.get(url, { withCredentials: true })
+		// 	.then(res => {
+		// 		setMyLists(res.data)
+		// 	})
+		// fetch(url, credentials: 'include)
 		// 	.then(res => res.json())
 		// 	.then(data => {
 		// 		// console.log(data);
 		// 		setMyLists(data)
 
 		// 	})
+
+		axiosSecure.get(url)
+			.then(res => {
+				setMyLists(res.data);
+
+			})
 	}, [])
 
 
