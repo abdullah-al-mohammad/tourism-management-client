@@ -1,11 +1,10 @@
 import React from 'react';
 import { FaEye, FaEyeSlash, FaFacebook, FaGoogle } from 'react-icons/fa';
-import { json, Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react'
 import { AuthContext } from '../../provider/AuthProvider';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import auth from '../../../../firebase.config';
-import axios from 'axios';
 
 const Login = () => {
 	const [success, setSuccess] = useState()
@@ -28,7 +27,7 @@ const Login = () => {
 		// create user auth
 		signInUser(email, password)
 			.then((result) => {
-				const loggedInUser = result.user
+				// const loggedInUser = result.user
 				navigate(location?.state ? location?.state : '/')
 				setSuccess('User LoggedIn successfully')
 			})
